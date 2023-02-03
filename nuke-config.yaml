@@ -1,0 +1,49 @@
+regions:
+  - eu-west-1
+  - eu-central-1
+  - global
+
+account-blocklist:
+  - "999999999999" # production
+
+resource-types:
+  # Exclude from nuke
+  excludes:
+    - Route53HostedZone
+    - Route53ResourceRecordSet
+    - Budget
+    - IAMVirtualMFADevice
+
+accounts:
+  "847775666541":
+    filters:
+      IAMUser:
+        - "dejano"
+        - "tfc"
+      IAMLoginProfile:
+        - "dejano"
+      IAMUserGroupAttachment:
+        - type: glob
+          value: "dejano -> *"
+        - type: glob
+          value: "tfc -> *"
+      IAMUserPolicyAttachment:
+        - type: glob
+          value: "admin_manually -> *"
+        - type: glob
+          value: "iac -> *"
+        - type: glob
+          value: "dejano -> *"
+      IAMUserAccessKey:
+        - type: glob
+          value: "dejano -> *"
+        - type: glob
+          value: "tfc -> *"
+      IAMGroup:
+        - "admin_manually"
+        - "iac"
+      IAMGroupPolicyAttachment:
+        - type: glob
+          value: "admin_manually -> *"
+        - type: glob
+          value: "iac -> *"
